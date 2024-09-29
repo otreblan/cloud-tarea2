@@ -40,7 +40,7 @@ CMD [ "python", "app.py"]
 ## Respuesta de la **Actividad 3.2**
 
 ```bash
-docker build -t app:v1.0 .
+docker build -t otreblan/app:v1.0 .
 ```
 
 
@@ -51,13 +51,17 @@ docker run --rm -d \
 	-p 8080:8080 \
 	-e DB_HOST="$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' boston-db)"  \
 	--name "boston-app" \
-	app:v1.0
+	otreblan/app:v1.0
 ```
 
 ## Respuesta de la **Actividad 4.1**
 
+<!--
+docker login
+docker push otreblan/app:v1.0
+-->
 ```yml
-
+url: https://hub.docker.com/repository/docker/otreblan/app/general
 ```
 
 ## Respuesta de la **Actividad 5.1**
