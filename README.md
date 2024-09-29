@@ -66,12 +66,33 @@ url: https://hub.docker.com/repository/docker/otreblan/app/general
 
 ## Respuesta de la **Actividad 5.1**
 
-```bash
+```yaml
+services:
+  boston-db:
+    container_name: boston-db
+    env_file: .env
+    image: "postgres:latest"
+    ports:
+      - "5432:5432"
+    volumes:
+      - boston-data:/var/lib/postgresql/data/
 
+  boston-app:
+    container_name: boston-app
+    environment:
+      DB_HOST: 172.17.0.2
+    ports:
+      - "8080:8080"
+    image: "otreblan/app:v1.0"
+
+volumes:
+  boston-data:
+    name: boston-data
+    driver: local
 ```
 
 ## Respuesta de la **Actividad 5.2**
 
 ```bash
-
+docker compose up -d
 ```
